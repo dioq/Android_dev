@@ -20,7 +20,6 @@
             <option value="$PROJECT_DIR$/constraintlayout01" />
             <option value="$PROJECT_DIR$/custonapplication" />
             <option value="$PROJECT_DIR$/dialogdemo" />
-            <option value="$PROJECT_DIR$/handler1" />
             <option value="$PROJECT_DIR$/imageview1" />
             <option value="$PROJECT_DIR$/imageview2" />
             <option value="$PROJECT_DIR$/json_parse" />
@@ -29,7 +28,7 @@
             <option value="$PROJECT_DIR$/listview1" />
             <option value="$PROJECT_DIR$/listview2" />
             <option value="$PROJECT_DIR$/listview3" />
-            <option value="$PROJECT_DIR$/log_handler" />
+            <option value="$PROJECT_DIR$/log_study" />
             <option value="$PROJECT_DIR$/network_native" />
             <option value="$PROJECT_DIR$/okhttp1" />
             <option value="$PROJECT_DIR$/okhttp_util" />
