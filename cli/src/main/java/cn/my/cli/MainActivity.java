@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
     public void test(View view) {
         String cmd = "/system/bin/cat /proc/meminfo";
-        String result = execCommand(cmd);
+        String result = CommandUtil.execCommand(cmd);
         tv.setText(result);
     }
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
     public void test2(View view) {
-        String[] cmd = {"/system/bin/cat","/proc/meminfo"};
+        String[] cmd = {"/system/bin/cat", "/proc/meminfo"};
         String result = execCommand2(cmd);
         tv.setText(result);
     }
@@ -54,33 +54,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
     public void test3(View view) {
         String cmd = "/system/bin/ls -l /proc";
-        String result = execCommand(cmd);
+        String result = CommandUtil.execCommand(cmd);
         tv.setText(result);
-    }
-
-    public String execCommand(String command) {
-        StringBuilder result = new StringBuilder();
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process process = runtime.exec(command);
-            if (process.waitFor() != 0) {
-                Log.d(TAG, "exit value = " + process.exitValue());
-            }
-
-            InputStream in = process.getInputStream();
-
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = in.read(buffer)) != -1) {
-                result.append(new String(buffer, 0, bytesRead));
-            }
-
-            in.close();
-            return result.toString().trim();
-        } catch (InterruptedException | IOException e) {
-            Log.d(TAG, "Exceptio:" + e.getMessage());
-        }
-        return null;
     }
 
     public static String execCommand2(String[] cli) {
