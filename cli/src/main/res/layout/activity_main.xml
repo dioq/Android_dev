@@ -7,28 +7,25 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="post_func"
-        android:text="POST_request" />
+        android:onClick="test"
+        android:text="cli"
+        tools:ignore="OnClick" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="post_raw_func"
-        android:text="Post raw Request" />
+        android:onClick="test2"
+        android:text="cli 2"
+        tools:ignore="OnClick" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="request_func"
-        android:text="GET_request" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="get_tls_twoway_func"
-        android:text="GET TLS two-way"
+        android:onClick="test3"
+        android:text="cli 3"
         tools:ignore="OnClick" />
 
     <!--呈现内容-->
@@ -36,14 +33,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="5dp">
 
         <TextView
-            android:id="@+id/request_text"
+            android:id="@+id/textViewId"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:hint="显示结果"
+            android:textSize="15sp" />
     </ScrollView>
 
 </LinearLayout>

@@ -144,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
                     String responseData = response.body().string();//处理返回的数据
                     System.out.println("responseData : \n" + responseData);
                     showResponse(responseData);//更新ui
-                } catch (IOException | CertificateException | NoSuchAlgorithmException | UnrecoverableKeyException | KeyStoreException | KeyManagementException e) {
+                } catch (IOException | CertificateException | NoSuchAlgorithmException |
+                         UnrecoverableKeyException | KeyStoreException | KeyManagementException e) {
                     e.printStackTrace();
                 }
             }

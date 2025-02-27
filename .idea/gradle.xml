@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/button1" />
             <option value="$PROJECT_DIR$/checkbox1" />
             <option value="$PROJECT_DIR$/checkbox2" />
+            <option value="$PROJECT_DIR$/cli" />
             <option value="$PROJECT_DIR$/clipboard_study" />
             <option value="$PROJECT_DIR$/constraintlayout01" />
             <option value="$PROJECT_DIR$/custonapplication" />
@@ -31,7 +32,6 @@
             <option value="$PROJECT_DIR$/log_study" />
             <option value="$PROJECT_DIR$/network_native" />
             <option value="$PROJECT_DIR$/okhttp1" />
-            <option value="$PROJECT_DIR$/okhttp_util" />
             <option value="$PROJECT_DIR$/package_install" />
             <option value="$PROJECT_DIR$/permission01" />
             <option value="$PROJECT_DIR$/phone" />
