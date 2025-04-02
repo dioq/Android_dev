@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,17 +111,15 @@ public class MainActivity extends AppCompatActivity {
         String str = "Hello, this is a test message!";
         String path = dir1 + "text.txt";
         Log.d(TAG, "path:" + path);
-//        File file = new File(path);
-//        try {
-//            file.createNewFile();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
-        FileUtils.getInstance().writeFile(path, str.getBytes());
+        try {
+            FileUtils.getInstance().write(new File(path), str.getBytes());
 
-        byte[] bytes = FileUtils.getInstance().readFile(path);
-        Log.d(TAG, "content:" + new String(bytes));
+            byte[] bytes = FileUtils.getInstance().read(new File(path));
+            Log.d(TAG, "content:" + new String(bytes));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showResponse(final String response) {

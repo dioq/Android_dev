@@ -13,7 +13,6 @@ import com.myself.network.SSL.CertificateManagers;
 import com.myself.network.SSL.MyHostnameVerifier;
 import com.myself.network.SSL.MyTrustManager;
 import com.myself.network.SSL.SSLTrustWhich;
-import com.myself.okhttpdemo.R;
 
 import org.json.JSONObject;
 

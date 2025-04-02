@@ -17,7 +17,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        System.out.println("go here");
     }
 
 }

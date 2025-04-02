@@ -1,10 +1,10 @@
 package cn.my.cli;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.system.ErrnoException;
+import android.system.Os;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context = null;
 
-    ClipboardManager clipboard = null;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = MainActivity.this;
 
-        clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        PermissionUtils.getInstance().requestPermissions(MainActivity.this);
     }
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
@@ -56,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
         String cmd = "/system/bin/ls -l /proc";
         String result = CommandUtil.execCommand(cmd);
         tv.setText(result);
+    }
+
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    public void test4(View view) {
+        try {
+            int permissions = 666;
+            Os.chmod("/data/local/tmp/1.txt", permissions);
+        } catch (ErrnoException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static String execCommand2(String[] cli) {
