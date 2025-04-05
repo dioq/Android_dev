@@ -5,9 +5,6 @@
       <SelectionState runConfigName="activity1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="broadcastreceiver1">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="broadcastreceiver2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -24,9 +21,6 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="dialogdemo">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="handler1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="imageview1">
@@ -57,9 +51,6 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="network_native">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="okhttp_util">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="okhttp1">
@@ -143,10 +134,10 @@
       <SelectionState runConfigName="parseapk">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="recyclerview01">
+      <SelectionState runConfigName="gridview01">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="gridview01">
+      <SelectionState runConfigName="broadcast01">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

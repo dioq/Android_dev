@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 右按钮需要定制
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         itemList.add(new GridItem(R.drawable.icon, "example2"));
 
         adapter = new GridAdapter(this, itemList);
-        gridView.setAdapter(adapter);
+        gridView.setAdapter(adapter); // 加载数据
     }
 
     @Override

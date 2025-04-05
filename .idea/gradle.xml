@@ -11,8 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/activity1" />
-            <option value="$PROJECT_DIR$/broadcastreceiver1" />
-            <option value="$PROJECT_DIR$/broadcastreceiver2" />
             <option value="$PROJECT_DIR$/button1" />
             <option value="$PROJECT_DIR$/checkbox1" />
             <option value="$PROJECT_DIR$/checkbox2" />

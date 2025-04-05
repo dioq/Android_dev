@@ -21,8 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android_dev"
 include(":activity1")
-include(":broadcastreceiver1")
-include(":broadcastreceiver2")
 include(":button1")
 include(":checkbox1")
 include(":checkbox2")
