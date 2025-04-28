@@ -11,23 +11,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/activity1" />
-            <option value="$PROJECT_DIR$/button1" />
-            <option value="$PROJECT_DIR$/checkbox1" />
-            <option value="$PROJECT_DIR$/checkbox2" />
             <option value="$PROJECT_DIR$/cli" />
             <option value="$PROJECT_DIR$/clipboard_study" />
-            <option value="$PROJECT_DIR$/constraintlayout01" />
             <option value="$PROJECT_DIR$/custonapplication" />
-            <option value="$PROJECT_DIR$/dialogdemo" />
-            <option value="$PROJECT_DIR$/gridview01" />
-            <option value="$PROJECT_DIR$/imageview1" />
-            <option value="$PROJECT_DIR$/imageview2" />
             <option value="$PROJECT_DIR$/json_parse" />
             <option value="$PROJECT_DIR$/judge_root" />
-            <option value="$PROJECT_DIR$/layout01" />
-            <option value="$PROJECT_DIR$/listview1" />
-            <option value="$PROJECT_DIR$/listview2" />
-            <option value="$PROJECT_DIR$/listview3" />
             <option value="$PROJECT_DIR$/log_study" />
             <option value="$PROJECT_DIR$/network_native" />
             <option value="$PROJECT_DIR$/okhttp1" />
@@ -38,23 +26,16 @@
             <option value="$PROJECT_DIR$/photograph" />
             <option value="$PROJECT_DIR$/proxy_dynamic" />
             <option value="$PROJECT_DIR$/proxy_local" />
-            <option value="$PROJECT_DIR$/radio" />
             <option value="$PROJECT_DIR$/resource_manager" />
             <option value="$PROJECT_DIR$/sandbox_study" />
-            <option value="$PROJECT_DIR$/scaledpixels" />
             <option value="$PROJECT_DIR$/selectfile" />
             <option value="$PROJECT_DIR$/sensor01" />
             <option value="$PROJECT_DIR$/service1" />
             <option value="$PROJECT_DIR$/service_bindservice" />
             <option value="$PROJECT_DIR$/service_startservice" />
             <option value="$PROJECT_DIR$/sharedpreferences1" />
-            <option value="$PROJECT_DIR$/tabdemo" />
             <option value="$PROJECT_DIR$/thread1" />
             <option value="$PROJECT_DIR$/timertask01" />
-            <option value="$PROJECT_DIR$/viewdemo1" />
-            <option value="$PROJECT_DIR$/viewdemo2" />
-            <option value="$PROJECT_DIR$/viewdemo3" />
-            <option value="$PROJECT_DIR$/webview01" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
