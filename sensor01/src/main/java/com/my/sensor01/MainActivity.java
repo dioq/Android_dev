@@ -33,14 +33,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tvId);
 
-        initSetting();
-        sensorShake();
+        get_system_service();
+        listener();
     }
 
-    /**
-     * 准备工作，获取传感器、震动服务、音频播放
-     */
-    private void initSetting() {
+    // 获取系统服务,如传感器、震动服务、音频播放
+    private void get_system_service() {
         //获取传感器服务管理对象
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         assert sensorManager != null;
@@ -56,14 +54,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, msg);
     }
 
-    /**
-     * 传感器震动, 界面显示消息
-     */
-    private void sensorShake() {
+    // 监听 传感器
+    private void listener() {
         //创建监听器对象
-        //作为一个标准值
-        //200:摇晃了200毫秒之后，开始震动
-        //500：震动持续的时间，震动持续了500毫秒。
         sensorEventListener = new SensorEventListener() {
             @SuppressLint("MissingPermission")
             @Override
@@ -77,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     float x = values[0];
                     float y = values[1];
                     float z = values[2];
-                    //作为一个标准值   最小低于 10 &最大值不超过 20
-                    int coll = 16;
 
                     @SuppressLint("DefaultLocale") String msg = String.format("x:%f,y:%f,z:%f\n", x, y, z);
                     Log.v(TAG, msg);
@@ -86,9 +77,11 @@ public class MainActivity extends AppCompatActivity {
                     vector += msg;
                     showResponse(vector);
 
+                    //作为一个标准值   最小低于 10 最大值不超过 20
+                    int coll = 16;
                     if (Math.abs(x) > coll | Math.abs(y) > coll | Math.abs(z) > coll) {
                         //200:摇晃了200毫秒之后，开始震动
-                        //500：震动持续的时间，震动持续了500毫秒。
+                        //500：震动持续的时间，震动持续了500毫秒
                         long[] pattern = {200, 2000};
                         vibrator.vibrate(pattern, -1);
                         Toast.makeText(MainActivity.this, "摇一摇拆红包", Toast.LENGTH_LONG).show();
@@ -103,26 +96,6 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    //  注册传感器监听器
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.v(TAG, "--------> onStart");
-        if (sensorManager != null) {
-            sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        }
-    }
-
-    //   注销传感器监听器
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.v(TAG, "--------> onPause");
-        if (sensorManager != null) {
-            sensorManager.unregisterListener(sensorEventListener);
-        }
-    }
-
     // 在主线程显示视图控件
     private void showResponse(final String response) {
         runOnUiThread(new Runnable() {
@@ -131,5 +104,23 @@ public class MainActivity extends AppCompatActivity {
                 tv.setText(response);//设置TextView的内容
             }
         });
+    }
+
+    public void register(View view) {
+        if (sensorManager != null) {
+            // 注册传感器监听器
+            sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            Log.e(TAG, "sensorManager is null");
+        }
+    }
+
+    public void unregister(View view) {
+        if (sensorManager != null) {
+            // 注销传感器监听器
+            sensorManager.unregisterListener(sensorEventListener);
+        } else {
+            Log.e(TAG, "sensorManager is null");
+        }
     }
 }

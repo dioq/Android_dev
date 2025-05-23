@@ -6,6 +6,21 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="register"
+        android:text="register"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="unregister"
+        android:text="unregister"
+        tools:ignore="OnClick" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
