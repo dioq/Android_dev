@@ -11,12 +11,13 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String TAG = "001";
+    public static String TAG = "dlog";
 
     private SensorManager sensorManager;
     private Vibrator vibrator;
@@ -24,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
     private SensorEventListener sensorEventListener;
 
     private String vector;
-    private TextView show_board;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        show_board = findViewById(R.id.tvId);
+        tv = findViewById(R.id.tvId);
 
         initSetting();
         sensorShake();
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
         //震动服务对象
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        int size = sensorManager.getSensorList(-1).size();
+        @SuppressLint("DefaultLocale") String msg = String.format("sensor size:%d", size);
+        Log.d(TAG, msg);
     }
 
     /**
@@ -63,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("MissingPermission")
             @Override
             public void onSensorChanged(SensorEvent event) {
+                int size = event.values.length; // 这就是当前 sensor type 的 size
+                Log.d(TAG, "sensor type size:" + size);
+
                 int type = event.sensor.getType();
                 if (type == Sensor.TYPE_ACCELEROMETER) {
                     float[] values = event.values;
@@ -72,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     //作为一个标准值   最小低于 10 &最大值不超过 20
                     int coll = 16;
 
-                    String valuesStr = "x : " + x + "\t\ty : " + y + "\t\tz : " + z + "\n";
-                    Log.v(TAG,valuesStr);
+                    @SuppressLint("DefaultLocale") String msg = String.format("x:%f,y:%f,z:%f\n", x, y, z);
+                    Log.v(TAG, msg);
 
-                    vector += valuesStr;
+                    vector += msg;
                     showResponse(vector);
 
                     if (Math.abs(x) > coll | Math.abs(y) > coll | Math.abs(z) > coll) {
@@ -99,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        Log.v(TAG,"--------> onStart");
+        Log.v(TAG, "--------> onStart");
         if (sensorManager != null) {
             sensorManager.registerListener(sensorEventListener, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-//        Log.v(TAG,"--------> onPause");
+        Log.v(TAG, "--------> onPause");
         if (sensorManager != null) {
             sensorManager.unregisterListener(sensorEventListener);
         }
@@ -120,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                show_board.setText(response);//设置TextView的内容
+                tv.setText(response);//设置TextView的内容
             }
         });
     }

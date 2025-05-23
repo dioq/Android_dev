@@ -20,6 +20,7 @@
         android:onClick="show_all"
         android:text="all app"
         tools:ignore="OnClick" />
+
     <ImageView
         android:id="@+id/imgV1"
         android:layout_width="wrap_content"

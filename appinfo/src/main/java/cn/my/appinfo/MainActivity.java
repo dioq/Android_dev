@@ -28,5 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "pkg name:" + pkg_name);
         String ps_name = android.os.Process.myProcessName();
         Log.d(TAG, "process_name:" + ps_name);
+        int pid = android.os.Process.myPid();
+        Log.d(TAG, "current pid:" + pid);
     }
 }
