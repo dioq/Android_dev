@@ -21,6 +21,13 @@
         android:text="unregister"
         tools:ignore="OnClick" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="info"
+        android:text="info"
+        tools:ignore="OnClick" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

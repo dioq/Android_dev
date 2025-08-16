@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "dlog";
 
+    private Context context;
+
     TextView show_board;
 
     @Override
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         show_board = findViewById(R.id.tvId);
+        context = MainActivity.this;
     }
 
     /*
@@ -35,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         data/data/pkgName/cache：存放的是APP的缓存信息
     * */
     public void inner_store(View view) {
-        Context context = MainActivity.this;
 //        Object shared_prefs_file = context.getSharedPreferences("login_status",0);
 //        Log.d(TAG,"getSharedPreferences:" + shared_prefs_file);
         File filesDir_file = context.getFilesDir();
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, dataDirectoryStr);
         log += dataDirectoryStr + "\n";
 
-        Context context = MainActivity.this;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
             File cacheDir = context.getExternalCacheDir();
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void program_path(View view) {
-        Context context = MainActivity.this;
         // 获取该程序的安装包路径  /data/app/xxx
         String packageResourcePath = context.getPackageResourcePath();
         String packageResourcePathStr = "getPackageResourcePath():\n" + packageResourcePath;

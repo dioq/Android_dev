@@ -15,9 +15,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "dlog";
+
+    private Context context;
 
     private SensorManager sensorManager;
     private Vibrator vibrator;
@@ -32,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tvId);
+
+        context = MainActivity.this;
 
         get_system_service();
         listener();
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //震动服务对象
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        int size = sensorManager.getSensorList(-1).size();
+        int size = sensorManager.getSensorList(Sensor.TYPE_ALL).size();
         @SuppressLint("DefaultLocale") String msg = String.format("sensor size:%d", size);
         Log.d(TAG, msg);
     }
@@ -122,5 +129,25 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "sensorManager is null");
         }
+    }
+
+    public void info(View view) {
+        //3,检测传感器类型,支持的全部类型传感器
+        List<Sensor> sensorlist = sensorManager.getSensorList(Sensor.TYPE_ALL);
+
+        ArrayList<Integer> sensorTypeS = new ArrayList<>();
+        for (Sensor sensor : sensorlist) {
+            //获取传感器类型
+            int type = sensor.getType();
+            if (!sensorTypeS.contains(type)) {
+                //发现一种类型则添加一种类型
+                sensorTypeS.add(type);
+            }
+        }
+        //小米k40 51个传感器类型
+        //普通的pix 27个
+        //华为荣耀20 18个传感器
+        Log.d(TAG, "sensor types size -> " + sensorlist.size());
+        //我们认为传感器少于20个则认为是风险设备
     }
 }
