@@ -2,40 +2,30 @@ package com.example.thread1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
+    public static String TAG = "dlog";
+
     private TextView textView;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        textView = (TextView)findViewById(R.id.textViewId);
-        button = (Button)findViewById(R.id.buttonId);
-        button.setOnClickListener(new ButtonListener());
+        textView = findViewById(R.id.tvId);
     }
 
-    class ButtonListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            Thread t = new MyThread();
-            t.start();
-
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//
-//                }
-//            }).start();
-        }
+    public void test1(View view) {
+        Thread t = new MyThread();
+        t.start();
     }
 
     class MyThread extends Thread {
@@ -48,8 +38,16 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            textView.setText("from  new thread");
+            Log.d(TAG, "test1 for thread!");
         }
     }
 
+    public void test2(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "test2 for thread!");
+            }
+        }).start();
+    }
 }
