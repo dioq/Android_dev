@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             if (data != null) {
                 Uri uri = data.getData();
                 if (uri != null) {
+                    Log.d(TAG, uri.toString());
                     copyFileToInternalStorage(uri);
                 }
             }
@@ -58,12 +59,11 @@ public class MainActivity extends AppCompatActivity {
         String destinationPath = getFilesDir().getPath() + File.separator + getFileName(uri);
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
-            OutputStream outputStream = new FileOutputStream(destinationPath);
-
             if (inputStream == null) {
                 Toast.makeText(this, "无法打开文件", Toast.LENGTH_SHORT).show();
                 return;
             }
+            OutputStream outputStream = new FileOutputStream(destinationPath);
 
             byte[] buffer = new byte[1024];
             int bytesRead;
@@ -71,31 +71,46 @@ public class MainActivity extends AppCompatActivity {
                 outputStream.write(buffer, 0, bytesRead);
             }
             Log.d(TAG, "文件已复制到: " + destinationPath);
+
+            inputStream.close();
+            outputStream.close();
         } catch (IOException e) {
             Log.e(TAG, "文件复制失败", e);
-            Toast.makeText(this, "文件复制失败", Toast.LENGTH_SHORT).show();
         }
     }
 
+    // Get file name from Uri
     private String getFileName(Uri uri) {
         String fileName = null;
-        if (Objects.equals(uri.getScheme(), "content")) {
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                if (nameIndex >= 0) {
-                    fileName = cursor.getString(nameIndex);
-                }
+        Cursor cursor = this.getContentResolver().query(uri, null, null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+            if (nameIndex != -1) {
+                fileName = cursor.getString(nameIndex);
             }
+            cursor.close();
         }
-
-        if (fileName == null) {
-            fileName = uri.getPath();
-            int cut = fileName.lastIndexOf('/');
-            if (cut != -1) {
-                fileName = fileName.substring(cut + 1);
-            }
-        }
-        return fileName;
+        return fileName != null ? fileName : "Unknown file";
     }
+//    private String getFileName(Uri uri) {
+//        String fileName = null;
+//        if (Objects.equals(uri.getScheme(), "content")) {
+//            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+//            if (cursor != null && cursor.moveToFirst()) {
+//                int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+//                if (nameIndex >= 0) {
+//                    fileName = cursor.getString(nameIndex);
+//                }
+//            }
+//        }
+//
+//        if (fileName == null) {
+//            fileName = uri.getPath();
+//            int cut = fileName.lastIndexOf('/');
+//            if (cut != -1) {
+//                fileName = fileName.substring(cut + 1);
+//            }
+//        }
+//        return fileName;
+//    }
 }
